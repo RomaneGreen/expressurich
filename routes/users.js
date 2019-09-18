@@ -1,9 +1,9 @@
-// var express = require('express');
-// var router = express.Router();
-
-// /* GET users listing. */
-// router.get('/', function(req, res, next) {
-//   res.send('respond with a resource');
-// });
-
-// module.exports = router;
+import { Router } from 'express';
+const router = Router();
+router.get('/', (req, res) => {
+  return res.send(Object.values(req.context.models.users));
+});
+router.get('/:userId', (req, res) => {
+  return res.send(req.context.models.users[req.params.userId]);
+});
+export default router;
